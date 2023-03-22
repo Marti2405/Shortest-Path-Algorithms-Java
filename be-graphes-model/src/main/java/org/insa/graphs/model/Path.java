@@ -203,7 +203,7 @@ public class Path {
     public boolean isValid() {
         int ret =1;
         Node n1=null,n2=null;
-        if (this.origin == null){
+        if (this.isEmpty()){
             return true;
         }
         else if(this.arcs.size()==0){
