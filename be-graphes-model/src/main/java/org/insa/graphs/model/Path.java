@@ -202,13 +202,22 @@ public class Path {
      */
     public boolean isValid() {
         int ret =1;
-        if (this.arcs == null){
+        Node n1=null,n2=null;
+        if (this.origin == null){
             return true;
         }
-        else if(this.origin!=null &&this.arcs.size()==0){
+        else if(this.arcs.size()==0){
             return true;
         }else{
-            return false;
+            for (int i =0; i<this.arcs.size()-1; i++){
+                n1=this.arcs.get(i).getDestination();
+                n2=this.arcs.get(i+1).getDestination();
+                if(n1!=n2){
+                    ret=0;
+                }
+            }
+
+            return (ret==1);
         }
         
     }
