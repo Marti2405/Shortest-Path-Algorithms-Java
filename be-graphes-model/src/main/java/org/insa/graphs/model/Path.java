@@ -201,8 +201,16 @@ public class Path {
      * @deprecated Need to be implemented.
      */
     public boolean isValid() {
-        // TODO:
-        return false;
+        int ret =1;
+        if (this.arcs == null){
+            return true;
+        }
+        else if(this.origin!=null &&this.arcs.size()==0){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
 
     /**
