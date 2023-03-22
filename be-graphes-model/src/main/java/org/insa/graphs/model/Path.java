@@ -226,7 +226,7 @@ public class Path {
     /**
      * Compute the length of this path (in meters).
      * 
-     * return Total length of the path (in meters).
+     * @return Total length of the path (in meters).
      * 
      * deprecated Need to be implemented.
      */
@@ -256,8 +256,7 @@ public class Path {
      * on every arc.
      * 
      * @return Minimum travel time to travel this path (in seconds).
-     * 
-     * @deprecated Need to be implemented.
+
      */
     public double getMinimumTravelTime() {
         float total = 0;
