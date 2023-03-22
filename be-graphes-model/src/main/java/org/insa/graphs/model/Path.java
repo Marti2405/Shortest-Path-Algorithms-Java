@@ -248,7 +248,7 @@ public class Path {
 
      */
     public double getTravelTime(double speed) {
-        return this.getLength()/speed;
+        return this.getLength()/speed*3.6;
     }
 
     /**
