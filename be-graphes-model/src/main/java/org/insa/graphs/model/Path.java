@@ -198,7 +198,7 @@ public class Path {
      * 
      * @return true if the path is valid, false otherwise.
      * 
-     * @deprecated Need to be implemented.
+     * Need to be implemented.
      */
     public boolean isValid() {
         int ret =1;
@@ -212,7 +212,7 @@ public class Path {
             for (int i =0; i<this.arcs.size()-1; i++){
                 n1=this.arcs.get(i).getDestination();
                 n2=this.arcs.get(i+1).getOrigin();
-                if(n1!=n2){
+                if (!(n1.equals(n2))){
                     ret=0;
                     break;
                 }

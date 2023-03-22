@@ -135,6 +135,7 @@ public final class Node implements Comparable<Node> {
 
     @Override
     public boolean equals(Object other) {
+        
         if (other == null) {
             return false;
         }
