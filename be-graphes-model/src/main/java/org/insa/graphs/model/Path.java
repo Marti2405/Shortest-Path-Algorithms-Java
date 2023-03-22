@@ -211,7 +211,7 @@ public class Path {
         }else{
             for (int i =0; i<this.arcs.size()-1; i++){
                 n1=this.arcs.get(i).getDestination();
-                n2=this.arcs.get(i+1).getDestination();
+                n2=this.arcs.get(i+1).getOrigin();
                 if(n1!=n2){
                     ret=0;
                     break;
