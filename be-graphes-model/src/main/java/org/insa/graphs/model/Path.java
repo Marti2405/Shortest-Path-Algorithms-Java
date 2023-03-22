@@ -214,6 +214,7 @@ public class Path {
                 n2=this.arcs.get(i+1).getDestination();
                 if(n1!=n2){
                     ret=0;
+                    break;
                 }
             }
 
