@@ -245,8 +245,7 @@ public class Path {
      * 
      * return Time (in seconds) required to travel this path at the given speed (in
      *         kilometers-per-hour).
-     * 
-     * IMPLEMENTED
+
      */
     public double getTravelTime(double speed) {
         return this.getLength()/speed;
@@ -261,8 +260,11 @@ public class Path {
      * @deprecated Need to be implemented.
      */
     public double getMinimumTravelTime() {
-        // TODO:
-        return 0;
+        float total = 0;
+        for (int i = 0; i < this.arcs.size(); i++) {
+			total += this.arcs.get(i).getMinimumTravelTime();
+		}
+        return total;
     }
 
 }
