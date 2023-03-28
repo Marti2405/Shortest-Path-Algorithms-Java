@@ -1,16 +1,17 @@
 package org.insa.graphs.algorithm.shortestpath;
 
 import org.insa.graphs.model.Arc;
+import org.insa.graphs.model.Node;
 
 public class Label {
 
-    private int sommetCourant;
+    private Node sommetCourant;
     private boolean marque;
-    private int coutRealise;
+    private double coutRealise;
     private Arc pere;
 
 
-    public Label(int sc, boolean m, int cr, Arc p){
+    public Label(Node sc, boolean m, double cr, Arc p){
         this.sommetCourant = sc;
         this.marque = m;
         this.coutRealise = cr;
@@ -19,21 +20,37 @@ public class Label {
     
 
 
-    public int getSommetCourant(){
+    public Node getSommetCourant(){
         return this.sommetCourant;
     }
     public boolean getMarque(){
         return this.marque;
     }
-    public int getCoutRealise(){
+    public double getCoutRealise(){
         return this.coutRealise;
     }
     public Arc getPere(){
         return this.pere;
     }
-    public int getCost(){
+    public double getCost(){
         return this.coutRealise; //Pour l'instant, a modifier
     }
+
+
+    
+    public void setMarque(boolean b){
+        this.marque =b;
+    }
+    public void setCoutRealise(double d){
+        this.coutRealise= d;
+    }
+    public void setPere(Arc a){
+        this.pere=a;
+    }
+    /*public void setCost(double a){
+        this.coutRealise; //Pour l'instant, a modifier
+    }*/
+    
 
     
 }
