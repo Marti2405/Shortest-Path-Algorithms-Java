@@ -5,7 +5,7 @@ import org.insa.graphs.model.Node;
 import org.insa.graphs.model.Point;
 
 
-public class LabelStar extends Label implements Comparable<LabelStar> {
+public class LabelStar extends Label {
 
     private Point destination;
 

@@ -38,7 +38,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
     protected ShortestPathSolution doRun() {
         final ShortestPathData data = getInputData();
         ShortestPathSolution solution = null;
-        BinaryHeap<LabelStar> heaplab = new BinaryHeap<LabelStar>();
+        BinaryHeap<Label> heaplab = new BinaryHeap<Label>();
 
         ShortestPathSolution solutionError = null;
         
