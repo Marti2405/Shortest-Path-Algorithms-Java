@@ -74,15 +74,21 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
         }
 
+
+        
         //Construction de la solution, on part de la destination puis on remonte avec les peres dans les labels
-        Stack<Arc> solutionArcList = new Stack<Arc>();
+        ArrayList<Arc> solutionArcList = new ArrayList<Arc>();
         Label currentLabel = getLabelfromNode(current);
         Label originLabel = getLabelfromNode(data.getOrigin());
 
+        
+        
         while (currentLabel!=originLabel){
-            solutionArcList.push(currentLabel.getPere());
+            solutionArcList.add(currentLabel.getPere());
             currentLabel = getLabelfromNode(currentLabel.getPere().getOrigin());
         }
+
+        Collections.reverse(solutionArcList);
 
         Path solutionPath = new Path(data.getGraph(), solutionArcList);
 
@@ -90,6 +96,12 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
 
         return solution;
+        
+        
+        
+        
     }
 
 }
+
+
