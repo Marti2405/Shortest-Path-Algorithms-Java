@@ -4,6 +4,7 @@ package org.insa.graphs.algorithm.shortestpath;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.insa.graphs.algorithm.AbstractInputData.Mode;
 import org.insa.graphs.algorithm.AbstractSolution.Status;
 import org.insa.graphs.algorithm.utils.BinaryHeap;
 import org.insa.graphs.model.Arc;
@@ -41,10 +42,13 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         ShortestPathSolution solution = null;
         BinaryHeap<Label> heaplab = new BinaryHeap<Label>();
 
+        ShortestPathSolution solutionError = null;
         
         
         
         while (current!=data.getDestination()){
+
+            
 
             ///On regarde tous les successeurs et on met a jour leurs labels si ont trouve un chemin plus opti
             for (Arc arc : current.getSuccessors()){
@@ -52,7 +56,16 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                 //si on a un chemin plus opti
                 Label labDest = getLabelfromNode(arc.getDestination());
                 Label labCurrent = getLabelfromNode(current);
-                if (labDest.getCoutRealise()>labCurrent.getCoutRealise()+arc.getLength()){
+
+                //Dans quel mode on est ?
+                double newcost;
+                if (data.getMode()==Mode.TIME){
+                    newcost = labCurrent.getCoutRealise()+arc.getMinimumTravelTime();
+                } else {
+                    newcost = labCurrent.getCoutRealise()+arc.getLength();
+                }
+
+                if (labDest.getCoutRealise()>newcost){
 
                     //si on a vu ou pas deja vu le label
                     if (labDest.getVue()){
@@ -61,7 +74,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                         labDest.setVue(true);
                     }
                     //on actualise le cout
-                    labDest.setCoutRealise(labCurrent.getCoutRealise()+arc.getLength());
+                    labDest.setCoutRealise(newcost);
                     
                     //on actualise le pere
                     labDest.setPere(arc);
@@ -70,6 +83,13 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                     heaplab.insert(labDest);
                 }
             }
+
+            //si le tas est vide ça veut dire qu'on a tout explore
+            if (heaplab.size()==0){
+                solutionError =  new ShortestPathSolution(data, Status.INFEASIBLE);
+                return solutionError;
+            }
+
             //Le tableau est mis à jour, on trouve maintenant le prochain sommet current avec un min des sommets qui sont pas marqués
             current = heaplab.deleteMin().getSommetCourant();
             getLabelfromNode(current).setMarque(true);
