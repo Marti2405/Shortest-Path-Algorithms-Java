@@ -1,12 +1,11 @@
 package org.insa.graphs.algorithm.shortestpath;
 
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Stack;
 
-import javax.sound.midi.Patch;
-
+import org.insa.graphs.algorithm.AbstractSolution.Status;
+import org.insa.graphs.algorithm.utils.BinaryHeap;
 import org.insa.graphs.model.Arc;
 import org.insa.graphs.model.Node;
 import org.insa.graphs.model.Path;
@@ -40,22 +39,42 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
     protected ShortestPathSolution doRun() {
         final ShortestPathData data = getInputData();
         ShortestPathSolution solution = null;
+        BinaryHeap<Label> heaplab = new BinaryHeap<Label>();
+
+        
+        
         
         while (current!=data.getDestination()){
 
             ///On regarde tous les successeurs et on met a jour leurs labels si ont trouve un chemin plus opti
             for (Arc arc : current.getSuccessors()){
+
                 //si on a un chemin plus opti
                 Label labDest = getLabelfromNode(arc.getDestination());
                 Label labCurrent = getLabelfromNode(current);
                 if (labDest.getCoutRealise()>labCurrent.getCoutRealise()+arc.getLength()){
+
+                    //si on a vu ou pas deja vu le label
+                    if (labDest.getVue()){
+                        heaplab.remove(labDest);
+                    }else {
+                        labDest.setVue(true);
+                    }
                     //on actualise le cout
                     labDest.setCoutRealise(labCurrent.getCoutRealise()+arc.getLength());
+                    
                     //on actualise le pere
                     labDest.setPere(arc);
+
+                    //on ajoute le successeur mis a jour
+                    heaplab.insert(labDest);
                 }
             }
             //Le tableau est mis à jour, on trouve maintenant le prochain sommet current avec un min des sommets qui sont pas marqués
+            current = heaplab.deleteMin().getSommetCourant();
+            getLabelfromNode(current).setMarque(true);
+            notifyNodeReached(current);
+            /*
             double min = Double.MAX_VALUE;
             Label labelCurrent = null;
             for (Label recherche : labelList){
@@ -70,7 +89,8 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             //On a le label minimum pas marqué, maintenant on met a jour le noeud current auquel on se trouve
             current = labelCurrent.getSommetCourant();
             getLabelfromNode(current).setMarque(true);
-
+            notifyNodeReached(current);
+            */
 
         }
 
@@ -92,7 +112,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
         Path solutionPath = new Path(data.getGraph(), solutionArcList);
 
-        solution = new ShortestPathSolution(data, null,solutionPath);
+        solution = new ShortestPathSolution(data, Status.OPTIMAL ,solutionPath);
 
 
         return solution;
