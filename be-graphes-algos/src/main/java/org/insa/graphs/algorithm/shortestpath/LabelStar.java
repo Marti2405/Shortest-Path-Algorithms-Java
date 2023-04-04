@@ -4,26 +4,28 @@ import org.insa.graphs.model.Arc;
 import org.insa.graphs.model.Node;
 import org.insa.graphs.model.Point;
 
-public class LabelStar extends Label {
 
-    
+public class LabelStar extends Label implements Comparable<LabelStar> {
 
-    public LabelStar(Node sc, boolean m, double cr, Arc p){
+    private Point destination;
+
+    public LabelStar(Node sc, boolean m, double cr, Arc p, Point destination){
         super(sc,m,cr,p);
+        this.destination = destination;
         
     }
 
-    public double getTotalCost(LabelStar origine){
-        return this.coutRealise + this.sommetCourant.getPoint().distanceTo(origine.getSommetCourant().getPoint());
+    public double getTotalCost(Point destination){
+        return this.coutRealise + this.sommetCourant.getPoint().distanceTo(this.destination);
     }
 
     
-    public int compareTo(LabelStar lab, LabelStar origine){
+    public int compareTo(LabelStar lab){
         int result = 0;
-        if (this.getTotalCost(origine)<lab.getTotalCost(origine)){
+        if (this.getTotalCost(this.destination)<lab.getTotalCost(this.destination)){
             result = -1;
         }
-        else if (this.getTotalCost(origine)>lab.getTotalCost(origine)) {
+        else if (this.getTotalCost(this.destination)>lab.getTotalCost(this.destination)) {
             result = 1;
         }
         return result;

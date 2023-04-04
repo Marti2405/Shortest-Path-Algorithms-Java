@@ -18,7 +18,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
     public AStarAlgorithm(ShortestPathData data) {
         super(data);
         for (Node e : data.getGraph().getNodes()){
-            LabelStar lab = new LabelStar(e, false, Double.MAX_VALUE, null);
+            LabelStar lab = new LabelStar(e, false, Double.MAX_VALUE, null,data.getOrigin().getPoint());
             if (data.getOrigin() == e ){
                 lab.setCoutRealise(0.0);
                 lab.setMarque(true);
