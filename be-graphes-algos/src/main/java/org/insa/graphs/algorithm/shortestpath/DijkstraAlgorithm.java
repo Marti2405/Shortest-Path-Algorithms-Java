@@ -74,26 +74,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             current = heaplab.deleteMin().getSommetCourant();
             getLabelfromNode(current).setMarque(true);
             notifyNodeReached(current);
-            /*
-            double min = Double.MAX_VALUE;
-            Label labelCurrent = null;
-            for (Label recherche : labelList){
-                if (recherche.getMarque()==false){
-                    if (min>recherche.getCoutRealise()){
-                        min = recherche.getCoutRealise();
-                        labelCurrent = recherche;
-                    }
-                }
-            }
-
-            //On a le label minimum pas marqué, maintenant on met a jour le noeud current auquel on se trouve
-            current = labelCurrent.getSommetCourant();
-            getLabelfromNode(current).setMarque(true);
-            notifyNodeReached(current);
-            */
-
         }
-
 
         
         //Construction de la solution, on part de la destination puis on remonte avec les peres dans les labels
