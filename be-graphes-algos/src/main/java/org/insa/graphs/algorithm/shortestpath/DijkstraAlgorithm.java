@@ -67,8 +67,9 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                 }
             }
 
-            //On a le label minimum pas marqué, maintenant on met a jour le neud current auquel on se trouve
+            //On a le label minimum pas marqué, maintenant on met a jour le noeud current auquel on se trouve
             current = labelCurrent.getSommetCourant();
+            getLabelfromNode(current).setMarque(true);
 
 
         }
