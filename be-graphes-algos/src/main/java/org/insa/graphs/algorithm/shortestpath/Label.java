@@ -5,11 +5,11 @@ import org.insa.graphs.model.Node;
 
 public class Label implements Comparable<Label>{
 
-    private Node sommetCourant;
-    private boolean marque;
-    private double coutRealise;
-    private Arc pere;
-    private boolean vue;
+    protected Node sommetCourant;
+    protected boolean marque;
+    protected double coutRealise;
+    protected Arc pere;
+    protected boolean vue;
 
 
     public Label(Node sc, boolean m, double cr, Arc p){
@@ -55,10 +55,7 @@ public class Label implements Comparable<Label>{
     public void setVue(boolean b){
         this.vue = b;
     }
-    /*public void setCost(double a){
-        this.coutRealise; //Pour l'instant, a modifier
-    }*/
-    
+
 
     public int compareTo(Label lab){
         int result = 0;

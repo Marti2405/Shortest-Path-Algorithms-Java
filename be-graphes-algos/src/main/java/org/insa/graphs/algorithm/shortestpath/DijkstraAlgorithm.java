@@ -76,6 +76,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             notifyNodeReached(current);
         }
 
+
         
         //Construction de la solution, on part de la destination puis on remonte avec les peres dans les labels
         ArrayList<Arc> solutionArcList = new ArrayList<Arc>();
