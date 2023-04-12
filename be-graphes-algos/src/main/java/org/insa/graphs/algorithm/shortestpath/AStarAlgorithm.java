@@ -9,6 +9,7 @@ import org.insa.graphs.algorithm.utils.BinaryHeap;
 import org.insa.graphs.model.Arc;
 import org.insa.graphs.model.Node;
 import org.insa.graphs.model.Path;
+import org.insa.graphs.model.Point;
 
 public class AStarAlgorithm extends DijkstraAlgorithm {
 
@@ -17,8 +18,21 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
 
     public AStarAlgorithm(ShortestPathData data) {
         super(data);
+        double speed = data.getGraph().getGraphInformation().getMaximumSpeed();
+        double heuristique;
+        Point destination = data.getDestination().getPoint();
+        
         for (Node e : data.getGraph().getNodes()){
-            LabelStar lab = new LabelStar(e, false, Double.MAX_VALUE, null,data.getDestination().getPoint());
+
+            
+            if (data.getMode()==Mode.TIME){
+                heuristique = e.getPoint().distanceTo(destination)*3.6/speed;
+            } else {
+                heuristique = e.getPoint().distanceTo(destination);
+            }
+            
+
+            LabelStar lab = new LabelStar(e, false, Double.MAX_VALUE, null,heuristique);
             if (data.getOrigin() == e ){
                 lab.setCoutRealise(0.0);
                 lab.setMarque(true);
@@ -113,7 +127,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
 
         solution = new ShortestPathSolution(data, Status.OPTIMAL ,solutionPath);
 
-
+        
         return solution;
         
     }

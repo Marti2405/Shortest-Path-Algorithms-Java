@@ -1,19 +1,21 @@
 package org.insa.graphs.algorithm.shortestpath;
 
+
 import org.insa.graphs.model.Arc;
 import org.insa.graphs.model.Node;
-import org.insa.graphs.model.Point;
+
 
 
 public class LabelStar  extends Label {
 
-    private Point destination;
-
+    private double heuristique;
+    
    
 
-    public LabelStar(Node sc, boolean m, double cr, Arc p, Point destination){
+    public LabelStar(Node sc, boolean m, double cr, Arc p, double heuristique){
         super(sc,m,cr,p);
-        this.destination = destination;
+
+        this.heuristique = heuristique;
        
     }
 
@@ -22,7 +24,8 @@ public class LabelStar  extends Label {
   
 
     public double getTotalCost(){
-        return this.coutRealise + this.sommetCourant.getPoint().distanceTo(this.destination);
+
+        return this.coutRealise + this.heuristique;
     }
 
     @Override
