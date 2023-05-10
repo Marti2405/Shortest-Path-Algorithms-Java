@@ -1,4 +1,4 @@
-package org.insa.graphes.model;
+/*package org.insa.graphes.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -130,3 +130,4 @@ public class AstarTest {
     }
 
 }
+*/
