@@ -1,28 +1,40 @@
-# Graph & Algorithm project &mdash; INSA Toulouse
+# Bellman-Ford, Dijkstra and A* Algorithms for Shortest Paths in Java — INSA Toulouse
 
-### To run, run the Java file:
+This repository contains implementations of the Bellman-Ford, Dijkstra, and A* algorithms for finding shortest paths in Java. The project is part of INSA Toulouse coursework.
+
+## Running the GUI
+
+To run the project, execute the Java file:
+
 `be-graphes-gui\src\main\java\org\insa\graphs\gui\MainWindow.java`
 
-### Once the GUI started you can open a map present in the maps folder.
+Once the GUI starts, you can open a map from the maps folder.
 
 ![Open a map](imgs/open_map.png)
 
-### Then go to Algorithms on the top left of the screen and select Shortest-Path.
+## Using Shortest-Path Algorithms
 
-![Open a map](imgs/select_algorithm.png)
+1. Click on "Algorithms" in the top left corner of the screen and select "Shortest-Path."
 
-### You will see a module appear on the right of your screen. Then you can select on the top list the algorithm that you want (Bellman-Ford, Dijkstra, A*).
+![Select algorithm](imgs/select_algorithm.png)
 
-![Open a map](imgs/module.png)
+2. A module will appear on the right side of the screen. Choose the desired algorithm (Bellman-Ford, Dijkstra, A*) from the top list.
 
-### Once the Algorithm selected. You can place in the map, the initial and destination points and then press Start in the right module.
+![Select algorithm module](imgs/module.png)
 
-![Open a map](imgs/example.png)
+3. After selecting the algorithm, you can place the initial and destination points on the map. Press the "Start" button in the module to begin the algorithm.
 
-Now you can see the progression of the Algorithm in blue and the Shortest Path in a different color. Some stats of the path will be shown on the top of the module.
+![Example](imgs/example.png)
 
-You can download other maps [here](https://data.typename.fr/insa).
+Watch the progression of the algorithm in blue, and the shortest path will be shown in a different color. Path statistics will be displayed at the top of the module.
 
-## Autors : 
+## Additional Maps
 
-Marti JIMENEZ, Rémi JACQUEMIN
+You can download more maps from [this link](https://data.typename.fr/insa).
+
+## Authors
+
+- Marti JIMENEZ
+- Rémi JACQUEMIN
+
+
