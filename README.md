@@ -32,6 +32,14 @@ Watch the progression of the algorithm in blue, and the shortest path will be sh
 
 You can download more maps from [this link](https://data.typename.fr/insa).
 
+## Open problem
+
+You can see our response to an open problem about the optimal crossing paths between 2 routes here:
+
+`Open_problem_cross_optimal_paths(French).pdf`
+
+(Please note: This report is only written in French)
+
 ## Authors
 
 - Marti JIMENEZ
