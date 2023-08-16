@@ -21,6 +21,7 @@
 
 Now you can see the progression of the Algorithm in blue and the Shortest Path in a different color. Some stats of the path will be shown on the top of the module.
 
+You can download other maps [here](https://data.typename.fr/insa).
 
 ## Autors : 
 
